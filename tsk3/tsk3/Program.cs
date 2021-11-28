@@ -1,0 +1,20 @@
+﻿using System;
+
+
+namespace tsk3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car ( new Engine(1000, 1000, "disel", "un"), new Chassis(20, "123", 3.2), new Transmission("av", 5, "so"),"red" );
+            Console.WriteLine(car.Info());
+            Bus bus = new Bus(new Engine(10000, 10000, "bigdisel", "bigun"), new Chassis(200, "1223", 3.22), new Transmission("bigav", 10, "bigso"),6);
+            bus.Info();
+            Truck truck = new Truck(new Engine(10000, 10000, "bigdisel", "bigun"), new Chassis(10, "1223", 3.22), new Transmission("bigav", 10, "bigso"), "Water Tank");
+            truck.Info();
+            Scooter scooter = new Scooter(new Engine(100, 10000, "bigdisel", "bigun"), new Chassis(10, "1223", 3.22), new Transmission("bigav", 10, "bigso"), true);
+            scooter.Info();
+        }
+    }
+}
