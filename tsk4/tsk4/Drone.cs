@@ -8,22 +8,22 @@ namespace tsk4
     {
         const int speed = 25;
         const int maxFlightDistance = 1000;
-        const int timeToStop = 10;
-        const int stopTime = 1;
-        const int minutesToHours = 60;
+        const double timeToStop = 10;
+        const double stopTime = 1;
+        const double minutesToHours = 60;
+  
         /// <summary>
         /// Changes the current position to a point that an drone flyes to. If the distance is more than maxFlightDistance drone won't fly.
         /// </summary>
         /// <param name="destination">the point we fly to</param>
         public override void FlyTo(Point destination)
         {
-            if( GetDistance(destination) > maxFlightDistance)
+            if(CurrentPosition.GetDistance(CurrentPosition, destination) > maxFlightDistance)
             {
                 throw new Exception("Drone can't fly that far");
             }
-            CurrentPosition.PointX = destination.PointX;
-            CurrentPosition.PointY = destination.PointY;
-            CurrentPosition.PointZ = destination.PointZ;
+            CurrentPosition = destination;
+            
         }
 
         /// <summary>
@@ -34,9 +34,9 @@ namespace tsk4
         /// <returns></returns>
         public double GetFlyTime(Point destination)
         {
-            double time = GetDistance(destination) / speed;
-
-            return (int)(time/(timeToStop/minutesToHours)*(stopTime/minutesToHours)) +time;
+            double time = CurrentPosition.GetDistance(CurrentPosition,destination) / speed;
+            double addtime =(int)(time / (timeToStop / minutesToHours)) * (stopTime / minutesToHours);
+            return time + addtime;
         }
 
 }

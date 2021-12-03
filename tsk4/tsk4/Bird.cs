@@ -4,11 +4,12 @@ using System.Text;
 
 namespace tsk4
 {
-    class Bird :Flyable,IFlyable
+    class Bird : Flyable, IFlyable
     {
         const int maxSpeed = 20;
         const int veryStrongWind = 30;
         const int storm = 50;
+
         /// <summary>
         /// Randomly generates the speed of the wind and checks if it's more than 30
         /// </summary>
@@ -28,6 +29,7 @@ namespace tsk4
             int speed = random.Next(maxSpeed);
             return speed;
         }
+  
         /// <summary>
         /// Changes the current position to a point that the bird flyes to
         /// If it's a windy day(WindyDay==true) the bird won't fly
@@ -39,9 +41,7 @@ namespace tsk4
             {
                 throw new Exception("It's very windy. A Bird can't fly today, try again tomorrow ");
             }
-            CurrentPosition.PointX = destination.PointX;
-            CurrentPosition.PointY = destination.PointY;
-            CurrentPosition.PointZ = destination.PointZ;
+            CurrentPosition = destination;
         }
         /// <summary>
         /// Counts the time bird needs to get from current position the point you choose
@@ -50,7 +50,7 @@ namespace tsk4
         /// <returns></returns>
         public double GetFlyTime(Point destination)
         { 
-            double time = GetDistance(destination) / GetSpeed();
+            double time = CurrentPosition.GetDistance(CurrentPosition, destination) / GetSpeed();
             return time;
         }
     }

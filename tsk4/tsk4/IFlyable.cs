@@ -7,8 +7,6 @@ namespace tsk4
     interface IFlyable
     {
         void FlyTo(Point destination);
-        double GetDistance(Point destination);
         double GetFlyTime(Point destination);
-
     }
 }
