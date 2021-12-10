@@ -16,7 +16,7 @@ namespace tsk3
             Number = number;
             PermissibleLoad = permissibleLoad;
         }
-        public string ChassisParams()
+        public string ChassisParamsToString()
         {
             return $"Amount Of Wheels: {AmountOfWheels}   Number : {Number}   Permissible Load: {PermissibleLoad}";
         }

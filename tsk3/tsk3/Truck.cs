@@ -21,9 +21,9 @@ namespace tsk3
             }
 
         }
-        public string Info()
+        public override string GeneralInfoToString()
         {
-            return $"{GeneralInfo()} Trunk Type : {TrunkType}";
+            return $"{base.GeneralInfoToString()} Trunk Type : {TrunkType}";
         }
     }
 }

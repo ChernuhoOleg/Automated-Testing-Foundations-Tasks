@@ -19,9 +19,9 @@ namespace tsk3
                throw new System.Exception("Bus shoud have a bigger Engine size") ;
             }
         }
-        public string Info()
+        public override string GeneralInfoToString()
         {
-          return $"{base.GeneralInfo()} Amount of Seats : {AmountOfSeats}";
+          return $"{base.GeneralInfoToString()} Amount of Seats : {AmountOfSeats}";
         }
     }
 }

@@ -21,9 +21,9 @@ namespace tsk3
                throw new System.Exception( "A Car transmission should have from 4 to 7 gears");
             }    
         }
-        public string Info()
+        public override string GeneralInfoToString()
         {
-           return $"{base.GeneralInfo()} Car Color: {color}";
+           return $"{base.GeneralInfoToString()} Car Color: {color}";
         }
     }
 }

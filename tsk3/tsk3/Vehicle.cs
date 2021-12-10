@@ -10,9 +10,9 @@ namespace tsk3
         public Chassis Chassis { get; set; }
         public Transmission Transmission { get; set; }
 
-        public string GeneralInfo()
+        public virtual string GeneralInfoToString()
         {
-            return $"{Engine.EngineParams()}\n {Transmission.TransmissionParams()}\n {Chassis.ChassisParams()}\n";
+            return $"{Engine.EngineParamsToString()}\n {Transmission.TransmissionParamsToString()}\n {Chassis.ChassisParamsToString()}\n";
         }
     }
 }

@@ -17,7 +17,7 @@ namespace tsk3
             TypeOfEngine = typeOfEngine;
             SerialNumber = serialNumber;
         }
-        public string EngineParams()
+        public string EngineParamsToString()
         { 
             return $"Power : {Power}  Size : {Size}  Type of Engine : {TypeOfEngine}  Serial Number :{SerialNumber}"; 
         }

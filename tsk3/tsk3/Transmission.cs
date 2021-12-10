@@ -16,7 +16,7 @@ namespace tsk3
             NumberOfGears = numberOfGears;
             Manufacturer = manufacturer;
         }
-        public string TransmissionParams()
+        public string TransmissionParamsToString()
         {
             return $"Type of Transmission : {TypeOfTransmission}   Number Of Gears : {NumberOfGears}   Manufacturer : {Manufacturer}";
         }

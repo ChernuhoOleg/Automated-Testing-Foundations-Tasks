@@ -18,9 +18,9 @@ namespace tsk3
                throw new System.Exception("A scooter Engine shoudn't be that powerfull") ;
             }
         }
-        public string Info()
+        public override string GeneralInfoToString()
         {
-            return $"{base.GeneralInfo()} Does it have a Bakseat? : {Backseat}";
+            return $"{base.GeneralInfoToString()} Does it have a Bakseat? : {Backseat}";
         }
     }
 }
