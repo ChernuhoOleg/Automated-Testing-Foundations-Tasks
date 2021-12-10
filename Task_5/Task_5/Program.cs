@@ -27,63 +27,62 @@ namespace Task_5
         }
          static void VehiclesByEngineSizeToXml(List<Vehicle> vehicles)
         {
-            XmlSerializer formatter = new XmlSerializer(typeof(Vehicle), new Type[] { typeof(Car), typeof(Scooter), typeof(Truck), typeof(Bus) });
+            var vehicleList = vehicles.Where(x => x.Engine.Size > 1.5).ToList();
+            XmlSerializer formatter = new XmlSerializer(vehicleList.GetType(), new Type[] { typeof(Car), typeof(Scooter), typeof(Truck), typeof(Bus) });
             using (FileStream fs = new FileStream("VehiclesByEngineSize.xml", FileMode.Create))
-            {
-                foreach (Vehicle vehicle in vehicles)
-                {
-                    if (vehicle.Engine.Size > 1.5)
-                    {
-                        formatter.Serialize(fs, vehicle);
-                    }
-                }
+ 
+                    formatter.Serialize(fs, vehicleList);
 
-            }
+
         }
         static void TruckandBusEngineInfo(List<Vehicle> vehicles)
         {
-            XDocument xdoc = new XDocument();
-            XElement vehiclesElem = new XElement("Vehicles");
-            // создаем первый элемент
-            foreach (Vehicle item in vehicles)
-            {
-                if (item.ToString() == "Task_5.Bus" || item.ToString() == "Task_5.Truck")
-                {
-                    XElement vehicle = new XElement("Vehicle");
-                    XElement engine = new XElement("Engine");
-                    XAttribute vehicleAttr = new XAttribute("type", item.ToString());
-                    XElement engineTypeElem = new XElement("type_of_Engine", item.Engine.TypeOfEngine.ToString());
-                    XElement enginePowerElem = new XElement("power", item.Engine.Power.ToString());
-                    XElement engineNumberElem = new XElement("serial_number", item.Engine.SerialNumber.ToString());
-                    vehicle.Add(vehicleAttr);
-                    engine.Add(engineTypeElem);
-                    engine.Add(engineNumberElem);
-                    engine.Add(enginePowerElem);
-                    vehicle.Add(engine);
-                    vehiclesElem.Add(vehicle);
-                }
-            }
+            var vehicleList = vehicles.Where(x => x.ToString() == "Task_5.Bus" || x.ToString() == "Task_5.Truck");
+            var engines =  vehicleList.Select(e => (e.Engine.Power, e.Engine.SerialNumber, e.Engine.TypeOfEngine)).ToList();
+            XmlSerializer formatter = new XmlSerializer(engines.GetType(), new Type[] { typeof(Engine)});
+            using (FileStream fs = new FileStream("Truck&Bus.xml", FileMode.Create))
+                formatter.Serialize(fs, engines);
 
-            xdoc.Add(vehiclesElem);
-            xdoc.Save("Truck&Bus.xml");
+
+
+            //XDocument xdoc = new XDocument();
+            //XElement vehiclesElem = new XElement("Vehicles");
+            //// создаем первый элемент
+            //foreach (Vehicle item in vehicles)
+            //{
+            //    if (item.ToString() == "Task_5.Bus" || item.ToString() == "Task_5.Truck")
+            //    {
+            //        XElement vehicle = new XElement("Vehicle");
+            //        XElement engine = new XElement("Engine");
+            //        XAttribute vehicleAttr = new XAttribute("type", item.ToString());
+            //        XElement engineTypeElem = new XElement("type_of_Engine", item.Engine.TypeOfEngine.ToString());
+            //        XElement enginePowerElem = new XElement("power", item.Engine.Power.ToString());
+            //        XElement engineNumberElem = new XElement("serial_number", item.Engine.SerialNumber.ToString());
+            //        vehicle.Add(vehicleAttr);
+            //        engine.Add(engineTypeElem);
+            //        engine.Add(engineNumberElem);
+            //        engine.Add(enginePowerElem);
+            //        vehicle.Add(engine);
+            //        vehiclesElem.Add(vehicle);
+            //    }
+            //}
+
+            //xdoc.Add(vehiclesElem);
+            //xdoc.Save("Truck&Bus.xml");
 
         }
  
         static void VehiclesGroupedByTransmissionToXml(List<Vehicle> vehicles)
         {
-            XmlSerializer formatter = new XmlSerializer(typeof(Vehicle), new Type[] { typeof(Car), typeof(Scooter), typeof(Truck), typeof(Bus) });
             FileStream fs = null;
             fs = new FileStream("VehiclesGroupedByTransmission.xml", FileMode.Create);
-                var vehicleGroups = from vehicle in vehicles
-                                group vehicle by vehicle.Transmission.TypeOfTransmission.ToString();
-            foreach (IGrouping<string, Vehicle> group in vehicleGroups)
-            {
-                foreach (var groupItem in group)
-                {
-                        formatter.Serialize(fs, groupItem);
-                }
-
-            }
+            var groupedVehicleList = vehicles
+                .GroupBy(u => u.Transmission.TypeOfTransmission.ToString())
+                .Select(grp => grp.ToList())
+                .ToList();
+            XmlSerializer formatter = new XmlSerializer(groupedVehicleList.GetType(), new Type[] { typeof(Car), typeof(Scooter), typeof(Truck), typeof(Bus) });
+               formatter.Serialize(fs, groupedVehicleList);
+                
 
         }
 }
