@@ -17,7 +17,7 @@ namespace tsk2
                 Console.WriteLine($"Enter a numeric base(a number from {minNumericBase} to {maxNumericBase})");
                 int numericBase = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Entered number in the new system");
-                Console.WriteLine(NumberInNewSystem(number, numericBase));
+                Console.WriteLine(NumberToNewSystem(number, numericBase));
             }
             catch (ArgumentOutOfRangeException ex)
             {
@@ -40,7 +40,7 @@ namespace tsk2
         /// <summary>
         /// This method converts a 10 base number to a new base
         /// </summary>
-        public static string NumberInNewSystem(int value, int newBase)
+        public static string NumberToNewSystem(int value, int newBase)
         {
             string result = string.Empty;
             if (newBase < minNumericBase || newBase > maxNumericBase)
