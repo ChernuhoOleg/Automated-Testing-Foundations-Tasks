@@ -9,11 +9,16 @@ namespace tsk1
         {
             try
             {
-                string line = args[0];
-                int answer = GetNotMatchingSymblos(line);
-                Console.WriteLine(answer);
+                if(args.Length == 1)
+                {
+                    string line = args[0];
+                    int answer = GetNotMatchingSymblos(line);
+                    Console.WriteLine(answer);
+                }
+                else Console.WriteLine("Wrong input");
+
             }
-            catch (IndexOutOfRangeException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
