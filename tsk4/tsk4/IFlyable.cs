@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace tsk4
+namespace AirTransport
 {
-    interface IFlyable
+    public interface IFlyable
     {
         void FlyTo(Point destination);
         double GetFlyTime(Point destination);

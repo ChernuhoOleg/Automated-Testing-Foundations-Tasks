@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace tsk4
+namespace AirTransport
 {
-    class Flyable
+    public class Flyable
     {
         public Point CurrentPosition = new Point();
+
         /// <summary>
         /// Current position information
         /// </summary>
@@ -15,6 +16,7 @@ namespace tsk4
         {
             return $"x = {CurrentPosition.PointX} y = {CurrentPosition.PointY} z = {CurrentPosition.PointZ}";
         }
+
         /// <summary>
         /// Changes the current position to a point that an object flyes to.
         /// </summary>
@@ -23,6 +25,5 @@ namespace tsk4
         {
             CurrentPosition = destination;
         }
-
     }
 }

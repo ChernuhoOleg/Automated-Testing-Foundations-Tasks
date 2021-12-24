@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace tsk4
+namespace AirTransport
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -10,18 +10,14 @@ namespace tsk4
             Point point = new Point(1000, 1000, 1000);
             Console.WriteLine(drone.GetFlyTime(point));
 
-            Console.WriteLine (drone.ToString());
             Plane plane = new Plane();
-
-            Console.WriteLine(plane.CurrentPosition);
+            Console.WriteLine(plane.CurrentPositionInfo());
             plane.GetFlyTime(point);
-            Bird bird = new Bird();
 
+            Bird bird = new Bird();
             Console.WriteLine(bird.GetFlyTime(point));
             Console.WriteLine(plane.GetFlyTime(point));
             bird.FlyTo(point);
-
-
         }
     }
 }
