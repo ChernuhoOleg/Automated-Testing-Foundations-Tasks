@@ -2,26 +2,32 @@
 
 namespace tsk2
 {
-    class Program
+    public class Program
     {
         static char[] alphabet = { '0','1', '2', '3', '4', '5', '6', '7', '8', '9',
                          'A', 'B', 'C', 'D', 'E', 'F','G','H','I','J'};
         const int minNumericBase = 2;
         const int maxNumericBase = 20;
+
         static void Main(string[] args)
         {
             try
             {
                 Console.WriteLine("Enter an integer number");
+
                 int number = Convert.ToInt32(Console.ReadLine());
+
                 Console.WriteLine($"Enter a numeric base(a number from {minNumericBase} to {maxNumericBase})");
+
                 int numericBase = Convert.ToInt32(Console.ReadLine());
+
                 Console.WriteLine("Entered number in the new system");
+
                 Console.WriteLine(NumberToNewSystem(number, numericBase));
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine( ex.Message);
+                Console.WriteLine(ex.Message);
             }
             catch (ArgumentException ex)
             {
@@ -57,7 +63,6 @@ namespace tsk2
 
             return result;
         }
-
     }
-    }
+}
 
