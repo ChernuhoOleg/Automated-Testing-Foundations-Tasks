@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace tsk2
+namespace NumberConverter
 {
     public class Program
     {
