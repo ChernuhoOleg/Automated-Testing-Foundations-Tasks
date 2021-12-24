@@ -1,34 +1,36 @@
 ﻿using System;
 
-namespace tsk1
+namespace FirstTask
 {
-    class Program
+    public class Program
     {
-        
+
         static void Main(string[] args)
         {
             try
             {
-                if(args.Length == 1)
+                if (args.Length == 1)
                 {
                     string line = args[0];
-                    int answer = GetNotMatchingSymblos(line);
+                    int answer = GetNotMatchingSymbols(line);
                     Console.WriteLine(answer);
                 }
-                else Console.WriteLine("Wrong input");
-
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
-
+            
 
         /// <summary>
         /// This method returns the biggest amount of symbols that don't match, before a symbol matches itself
         /// </summary>
-        static int GetNotMatchingSymblos(string line)
+        static int GetNotMatchingSymbols(string line)
         {
             int currentAmount = 1;
             int biggestAmount = 1;
@@ -44,16 +46,15 @@ namespace tsk1
                     {
                         biggestAmount = currentAmount;
                     }
-                        currentAmount = 1;
+                    currentAmount = 1;
                 }
             }
             if (currentAmount > biggestAmount)
-            { 
+            {
                 biggestAmount = currentAmount;
             }
 
             return biggestAmount;
-            
         }
     }
 }
