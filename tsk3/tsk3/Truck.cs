@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Vehicles
 {
-    class Truck : Vehicle
+    public class Truck : Vehicle
     {
         private const int minAmountOfWheels = 4;
 

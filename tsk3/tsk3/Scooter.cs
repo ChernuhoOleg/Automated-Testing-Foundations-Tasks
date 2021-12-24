@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Vehicles
 {
-    class Scooter : Vehicle
+    public class Scooter : Vehicle
     {
         public bool Backseat { get; set; }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Vehicles
 {
-    class Bus : Vehicle
+    public class Bus : Vehicle
     {
         private const int minEnginePower = 100;
 
