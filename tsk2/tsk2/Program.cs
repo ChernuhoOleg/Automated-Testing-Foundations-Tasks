@@ -14,15 +14,12 @@ namespace NumberConverter
             try
             {
                 Console.WriteLine("Enter an integer number");
-
                 int number = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine($"Enter a numeric base(a number from {minNumericBase} to {maxNumericBase})");
-
                 int numericBase = Convert.ToInt32(Console.ReadLine());
 
                 Console.WriteLine("Entered number in the new system");
-
                 Console.WriteLine(NumberToNewSystem(number, numericBase));
             }
             catch (ArgumentOutOfRangeException ex)
